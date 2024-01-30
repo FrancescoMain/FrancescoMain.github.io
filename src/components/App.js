@@ -1,5 +1,5 @@
 import "./App.css";
-import ButtonAppBar from "./AppBar";
+import ButtonAppBar from "./AppBar/AppBar";
 import FixedBottomNavigation from "./BottomNavigation";
 
 function App() {
