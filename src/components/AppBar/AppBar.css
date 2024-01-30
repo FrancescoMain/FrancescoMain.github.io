@@ -1,11 +1,3 @@
-.img-container {
-  height: 50px;
-  border-radius: 10%;
-}
-.img-container img {
-  border-radius: 10px;
-}
-
 .appTitle {
   font-size: 1.5rem;
   font-weight: 600;

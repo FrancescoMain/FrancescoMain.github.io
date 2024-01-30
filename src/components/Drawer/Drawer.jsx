@@ -7,10 +7,11 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
+import icon from "../../assets/logo-xs.jpeg";
+import "./Drawer.css";
+import { DrawerList, DrawerList2 } from "./DrawerList";
+import { useNavigate } from "react-router-dom";
 
 export default function SwipeableTemporaryDrawer() {
   const [state, setState] = React.useState({
@@ -19,6 +20,12 @@ export default function SwipeableTemporaryDrawer() {
     bottom: false,
     right: false,
   });
+
+  const navigate = useNavigate();
+
+  const handleMenuClick = (path) => () => {
+    navigate(path);
+  };
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -40,26 +47,26 @@ export default function SwipeableTemporaryDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem key={text} disablePadding>
+        {DrawerList.map((item, index) => (
+          <ListItem
+            key={item.title}
+            onClick={handleMenuClick(item.path)}
+            disablePadding
+          >
             <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemIcon>{item.icon}</ListItemIcon>
+              <ListItemText primary={item.title} />
             </ListItemButton>
           </ListItem>
         ))}
       </List>
       <Divider />
       <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem key={text} disablePadding>
+        {DrawerList2.map((item, index) => (
+          <ListItem key={item.title} disablePadding>
             <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemIcon>{item.icon}</ListItemIcon>
+              <ListItemText primary={item.title} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -78,8 +85,9 @@ export default function SwipeableTemporaryDrawer() {
             color="inherit"
             aria-label="menu"
             sx={{ mr: 2 }}
+            className="icon-button"
           >
-            <MenuIcon />
+            <img src={icon} alt="logo" />
           </IconButton>
 
           <SwipeableDrawer
