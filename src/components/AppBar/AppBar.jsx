@@ -13,8 +13,8 @@ export default function ButtonAppBar() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <SwipeableTemporaryDrawer></SwipeableTemporaryDrawer>
-
+          <SwipeableTemporaryDrawer />
+          <h3 className="appTitle">TArtooAi</h3>
           <Typography component="div" sx={{ flexGrow: 1 }}>
             <div className="img-container">
               <img alt="Logo of the company" src={logoFull} />
